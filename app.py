@@ -49,10 +49,7 @@ def run_app():
     app_status = True
     while app_status:
         resp = input(
-            "Welcome to the save state app\n\
-            Press 'q' to quit\n\
-            Press 's' to save state\n\
-            Press 'r' to restore\n"
+            "Welcome to the save state app\nPress 'q' to quit\nPress 's' to save state\nPress 'r' to restore\n"
         )
         if resp == "q":
             app_status = False
@@ -62,7 +59,9 @@ def run_app():
             )
             save_state(name)
         elif resp == "r":
-            name = input("Enter the state name, or hit enter to restore default state\n")
+            name = input(
+                "Enter the state name, or hit enter to restore default state\n"
+            )
             restore_state(name)
 
 
