@@ -5,7 +5,7 @@ with open("README.md", "r") as f:
 
 setup(
     name="windows-state-saver",
-    version="0.0.10",
+    version="0.0.11",
     description="Saves the current state of a Windows laptop and then reopen it.",
     packages=find_packages(),
     long_description=long_description,

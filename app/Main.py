@@ -3,24 +3,12 @@ import subprocess
 import json
 import importlib_resources
 
-# C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
 
-# ----------------V1---------------------
-# current_dir = os.path.dirname(os.path.abspath(__file__))
-# data_json = current_dir + '/data.json'
-# output_txt = current_dir + '/output.txt'
-# script_ps = current_dir + '/script.ps1'
-
-
-# ----------------V2---------------------
-
-# Get absolute path of current directory
 current_dir = os.path.dirname(os.path.abspath(__file__))
 
-my_resources = importlib_resources.files("app")
-data_json = my_resources / "data.json"
-output_txt = my_resources / "output.txt"
-script_ps = my_resources / "script.ps1"
+data_json = current_dir + "/data.json"
+output_txt = current_dir + "/output.txt"
+script_ps = current_dir + "/script.ps1"
 
 if not os.path.exists(data_json):
     with open(data_json, "w") as f:
@@ -97,7 +85,7 @@ Get-Process | Where-Object { $_.MainWindowTitle } | ForEach-Object {
     })
 }
 """ + f'$windows | Out-File -FilePath "{current_dir}/output.txt" -Encoding UTF8'
-
+print(script_ps)
 if not os.path.exists(script_ps):
     with open(script_ps, "w") as f:
         f.write(script)
@@ -135,7 +123,7 @@ def user_onboard():
         data = json.load(f)
         if "path" in data.keys():
             return
-        data["path"] = input("Enter the absolute path of powershell.exe: ")
+        data["path"] = input("Enter the absolute path of powershell.exe\nALERT:Do not enter path to the shortcut\nThis is just a ONE TIME setup!\nPaste the address here: ")
 
     with open(data_json, "w") as f:
         json.dump(data, f)
@@ -149,18 +137,26 @@ def run():
     app_status = True
     while app_status:
         resp = input(
-            "Welcome to the save state app\nPress 'q' to quit\nPress 's' to save state\nPress 'r' to restore\n"
+            "Welcome to the save state app\n1. Press 'q' to quit\n2. Press 's' to save the state\n3. Press 'r' to restore a state\nEnter your choice here: "
         )
         if resp == "q":
             app_status = False
         elif resp == "s":
             name = input(
-                "Do you want to name this state?\nHit enter if not, else write it!\n"
+                "Do you want to name this state?\nHit enter again if you want to save it as the default state\nEnter your response here else hit enter: "
             )
             save_state(name)
         elif resp == "r":
+            with open(data_json, "r") as f:
+                data = json.load(f)
+                print("\nAvailable states:")
+                print("-----------------")
+                for state in data.keys():
+                    if state != "path" and state != "default_state":
+                        print(state)
+                print("-----------------\n")
             name = input(
-                "Enter the state name, or hit enter to restore default state\n"
+                "Type the name of the state that you want to restore?\nHit enter again if you want to open the last saved (default) state\nEnter your response here else hit enter: "
             )
             restore_state(name)
 

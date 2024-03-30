@@ -1,3 +1,0 @@
-﻿ChatGPT - Google Chrome - C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
-script.ps1 - save-state - Visual Studio Code - C:\Users\91820\AppData\Local\Programs\Microsoft VS Code\Code.exe
-MorseDecode.py - MorseCode - Visual Studio Code - C:\Users\91820\AppData\Local\Programs\Microsoft VS Code\Code.exe
