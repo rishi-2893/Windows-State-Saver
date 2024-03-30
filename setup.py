@@ -4,10 +4,9 @@ with open("README.md", "r") as f:
     long_description = f.read()
 
 setup(
-    name="state_saver",
+    name="windows-state-saver",
     version="0.0.10",
     description="Saves the current state of a Windows laptop and then reopen it.",
-    # package_dir={"": "app"},
     packages=find_packages(),
     long_description=long_description,
     long_description_content_type="text/markdown",
