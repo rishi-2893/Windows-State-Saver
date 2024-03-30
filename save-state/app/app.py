@@ -3,18 +3,21 @@ import subprocess
 import json
 
 
+current_dir = os.path.dirname(os.path.abspath(__file__))
+data_json = current_dir + '../../data.json'
+output_txt = current_dir + '../../output.txt'
+script_ps = current_dir + '../../script.ps1'
+
 def save_state(name):
-    current_dir = os.path.dirname(os.path.abspath(__file__))
-    with open("data.json", "r") as f:
+    with open(data_json, "r") as f:
         data = json.load(f)
-        script = current_dir + "/script.ps1"
-        subprocess.call([data["path"], script])
-    with open("output.txt", "r") as f:
+        subprocess.call([data["path"], script_ps])
+    with open(output_txt, "r") as f:
         paths = []
         for process in f:
             paths.append(process.strip().split(" - ")[-1])
 
-    with open("data.json", "w") as f:
+    with open(data_json, "w") as f:
         if name:
             data[name] = paths
         else:
@@ -23,7 +26,7 @@ def save_state(name):
 
 
 def restore_state(name):
-    with open("data.json", "r") as f:
+    with open(data_json, "r") as f:
         data = json.load(f)
         if not name:
             for app in data["default_state"]:
@@ -34,13 +37,13 @@ def restore_state(name):
 
 
 def user_onboard():
-    with open("data.json", "r") as f:
+    with open(data_json, "r") as f:
         data = json.load(f)
         if "path" in data.keys():
             return
         data["path"] = input("Enter the absolute path of powershell.exe: ")
 
-    with open("data.json", "w") as f:
+    with open(data_json, "w") as f:
         json.dump(data, f)
 
 

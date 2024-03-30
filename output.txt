@@ -1,3 +1,0 @@
-﻿Version - 1 - Google Chrome - C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
-data.json - save-state - Visual Studio Code - C:\Users\91820\AppData\Local\Programs\Microsoft VS Code\Code.exe
-Rishi (4) - C:\Users\91820\AppData\Roaming\Telegram Desktop\Telegram.exe

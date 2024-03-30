@@ -67,6 +67,4 @@ Get-Process | Where-Object { $_.MainWindowTitle } | ForEach-Object {
         }, 0)
     })
 }
-# Output in UTF-8 encoding
-$windows | Out-File -FilePath "output.txt" -Encoding UTF8
-Write-Output "Window names written to output.txt"
+$windows | Out-File -FilePath "save-state/output.txt" -Encoding UTF8

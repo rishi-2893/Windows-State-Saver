@@ -1,0 +1,2 @@
+﻿vidstream/vidstream at main · NeuralNine/vidstream - Google Chrome - C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
+app.py - save-state - Visual Studio Code - C:\Users\91820\AppData\Local\Programs\Microsoft VS Code\Code.exe
