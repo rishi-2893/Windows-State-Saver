@@ -67,4 +67,4 @@ Get-Process | Where-Object { $_.MainWindowTitle } | ForEach-Object {
         }, 0)
     })
 }
-$windows | Out-File -FilePath "save-state/output.txt" -Encoding UTF8
+$windows | Out-File -FilePath "app/output.txt" -Encoding UTF8
