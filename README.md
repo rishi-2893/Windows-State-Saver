@@ -1,4 +1,4 @@
-# Windows State Saver 
+# Windows State Saver.
 
 ## Overview
 This Package aims to solve the issue of saving the current state of a Windows system, including information about all open applications. The motivation behind this project is to provide a solution for users who wish to resume their work seamlessly even after a computer restart.
